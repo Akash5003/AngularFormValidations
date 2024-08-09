@@ -1,0 +1,106 @@
+<div class="container">
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card mt-5">
+      <div class="card-header text-center">
+        <h3>Form Fill Pannanum</h3>
+      </div>
+      <div class="card-body">
+        <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && submit()"   novalidate >
+          <!-- for Title field -->
+          <div class="form-group">
+            <label for="title">Title</label>
+            <select id="title" name="title" [(ngModel)]="formdata.title"  #t="ngModel" class="form-control "[ngClass]="{'is-invalid': f.submitted && t.invalid}" required>
+              <option value="" disabled selected>Select your title</option>
+              <option value="Mr">Mr</option>
+              <option value="Mrs">Mrs</option>
+              <option value="Miss">Miss</option>
+              <option value="Dr">Dr</option>
+            </select>
+            <div class="invalid-feedback">
+              <div>This title is required</div>
+              </div>
+          </div>
+
+          <!-- for First Name -->
+          <div class="form-group">
+            <label for="firstname">First Name</label>
+            <input type="text" id="firstname" name="firstname" #fn="ngModel" [(ngModel)]="formdata.firstname" class="form-control" [ngClass]="{'is-invalid':f.submitted && fn.invalid}" required >
+            <div class="invalid-feedback">
+              <div>Firsname is must</div>
+            </div>
+          </div>
+
+          <!--for Last Name -->
+          <div class="form-group">
+            <label for="lastname">Last Name</label>
+            <input type="text" id="lastname" name="lastname" #ln="ngModel" [(ngModel)]="formdata.lastname" class="form-control" [ngClass]="{'is-invalid':f.submitted && ln.invalid}" required>
+            <div class="invalid-feedback">
+              <div>Last name also Must</div>
+            </div>
+          </div>
+
+          <!--for Date of Birth -->
+          <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob" name="dob" [(ngModel)]="formdata.dob" class="form-control" #db="ngModel" [ngClass]="{'is-invalid':f.submitted && db.invalid}" required>
+            <div class="invalid-feedback">
+              <div>DOB mukkiyam</div>
+            </div>
+          </div>
+
+          <!-- for Email -->
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" #email="ngModel" 
+            [(ngModel)]="formdata.email" class="form-control" 
+            [ngClass]="{'is-invalid':f.submitted && email.invalid}"
+            email
+            required >
+            <div class="invalid-feedback">
+              <div *ngIf ="email.errors?.['required']">Email is also required</div>
+              <div *ngIf ="email.errors?.['email']">Enter the valid E-mail Address</div>
+            </div>
+          </div>
+
+          <!-- for Password -->
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" [(ngModel)]="formdata.password"
+              class="form-control" #p="ngModel" [ngClass]="{'is-invalid':f.submitted && p.invalid}" required 
+              minlength="6">
+              <div class="invalid-feedback">
+              <div *ngIf="p.errors?.['required']">Password must</div>
+              <div *ngIf="p.errors?.['minlength']">Set Password as minimum 6 characters</div>
+              </div>
+          </div>
+
+          <!-- for Confirm Password -->
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" [(ngModel)]="formdata.confirmPassword" class="form-control" #cp="ngModel" [ngClass]="{'is-invalid':f.submitted && cp.invalid }" required>
+            <div class="invalid-feedback">
+              <div *ngIf="cp.errors?.['required']">enter confirm password</div>
+              <div *ngIf="f.submitted && formdata.password !== formdata.confirmPassword">Passwords must match</div>
+              
+                
+            </div>
+          </div>
+
+          <!-- for Accept Terms and Conditions -->
+          <div class="form-group form-check">
+            <input type="checkbox" id="terms" #TC="ngModel" name="terms"[(ngModel)]="formdata.terms" class="form-check-input" [ngClass]="{'is-invalid': f.submitted && TC.invalid}" required >
+            <label for="terms" class="form-check-label">I accept the terms and conditions</label>
+          </div>
+
+          <!-- for Buttons -->
+          <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary">Register</button>&nbsp;
+            <button type="button" class="btn btn-secondary" (click)=" resetForm()">Reset</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
