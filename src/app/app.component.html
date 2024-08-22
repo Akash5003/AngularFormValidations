@@ -10,7 +10,7 @@
           <!-- for Title field -->
           <div class="form-group">
             <label for="title">Title</label>
-            <select id="title" name="title" [(ngModel)]="formdata.title"  #t="ngModel" class="form-control "[ngClass]="{'is-invalid': f.submitted && t.invalid}" required>
+            <select id="title" name="title" [(ngModel)]="formdata.title"  #t="ngModel" class="form-control "[ngClass]="{' is-invalid': f.submitted && t.invalid}" required>
               <option value="" disabled selected>Select your title</option>
               <option value="Mr">Mr</option>
               <option value="Mrs">Mrs</option>
